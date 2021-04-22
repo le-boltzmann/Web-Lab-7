@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>AJAX JSON</title>
+
+
+
+</head>
+
+<body>
+<button type="button" id="submitButton">Fetch Data</button>
+<br><br>
+<div id="location">hello</div>
+
+<script>
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    var myArr = JSON.parse(this.responseText);
+    document.getElementById("location").innerHTML = myArr.employees[1].office;
+  }
+};
+xmlhttp.open("GET", "emp_data.json", true);
+xmlhttp.send();
+</script>
+
+</body>
+</html>
